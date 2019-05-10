@@ -98,7 +98,6 @@
                             
                     @endguest
                 </div>
-            
 
             </div>
         </div>

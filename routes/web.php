@@ -18,3 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Organizadores
+Route::get('organizers','OrganizerController@index')->name('organizers.index');
+
+Route::get('organizers/create','OrganizerController@create')->name('organizers.create');
+Route::post('organizers/store','OrganizerController@store')->name('organizers.store');
+
+Route::get('organizers/{organizer}/edit','OrganizerController@edit')->name('organizers.edit');
+Route::put('organizers/{organizer}','OrganizerController@update')->name('organizers.update');
+
+// Eventos
+Route::get('events', 'EventController@index')->name('events.index');
+
+// Atletas
+
+Route::get('athetes','AthleteController@index')->name('athletes.index');
