@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Organizadores
 Route::get('organizers','OrganizerController@index')->name('organizers.index');
+Route::get('organizers/{organizer}','OrganizerController@show')->name('organizers.show');
 
 Route::get('organizers/create','OrganizerController@create')->name('organizers.create');
 Route::post('organizers/store','OrganizerController@store')->name('organizers.store');
@@ -30,6 +31,10 @@ Route::put('organizers/{organizer}','OrganizerController@update')->name('organiz
 
 // Eventos
 Route::get('events', 'EventController@index')->name('events.index');
+Route::get('events/{event}','EventController@show')->name('events.show');
+
+Route::get('events/{event}/edit','EventController@edit')->name('events.edit');
+Route::put('events/{event}','EventController@update')->name('events.update');
 
 // Atletas
 

@@ -3,9 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Eventos</div>
+                <div class="card-header"> 
+                    <a href="#" class="btn btn-primary float-right">Crear</a>
+                    <h4>Eventos</h4>
+                </div>
 
                 <div class="card-body">
                 <table class="table table-bordered">
@@ -18,20 +21,20 @@
                             <th>Cantidad</th>
                             <th>Inscribirse</th>
                             <th>Editar</th>
-                            <th>Lista</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($events as $event)
                         <tr>
                             <td>{{ $event->organizer->nombre }}</td>
-                            <td>Deporte</td>
+                            <td>{{ $event->sport->nombre }}</td>
                             <td>{{ $event->nombre }}</td>
                             <td>{{ $event->fecha }}</td>
                             <td>cantidad</td>
                             <td>inscribirse</td>
-                            <td>editar</td>
-                            <td>listar</td>
+                            <td><a href="{{ route('events.edit',$event->id) }}" class="btn btn-warning">Editar</a></td>
+                            <td><a href="{{ route('events.show',$event->id) }}" class="btn btn-primary">Ver</a></td>
                         </tr>
                         @endforeach
                     </tbody>

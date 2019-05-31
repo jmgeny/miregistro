@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Crear Organizador</div>
+                <div class="card-header">
+                    <h4>Crear Organizador</h4>
+                </div>
 
                 <div class="card-body">
                     {!! Form::open(['route' => 'organizers.store']) !!}

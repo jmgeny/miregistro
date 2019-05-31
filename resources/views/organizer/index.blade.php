@@ -3,10 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Organizador
-                    <a href="{{ route('organizers.create') }}" class="btn btn-primary">Crear</a>
+                <div class="card-header">
+                    <a href="{{ route('organizers.create') }}" class="btn btn-primary float-right">Crear</a>
+                    <h4>Organizador</h4>
                 </div>
                 <div class="card-body">
                 <table class="table table-bordered">
@@ -17,6 +18,7 @@
                             <th>Dirección</th>
                             <th>e-mail</th>
                             <th>Editar</th>
+                            <th>Ver</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,7 +28,8 @@
                             <td>{{ $organizer->nombre }}</td>
                             <td>{{ $organizer->direccion }}</td>
                             <td>{{ $organizer->mail }}</td>
-                            <td><a href="{{ route('organizers.edit',$organizer->id) }}">Editar</a></td>
+                            <td><a href="{{ route('organizers.edit',$organizer->id) }}" class="btn btn-warning">Editar</a></td>
+                            <td><a href="{{ route('organizers.show',$organizer->id) }}" class="btn btn-primary">Ver</a></td>
                         </tr>
                         @endforeach
                     </tbody>

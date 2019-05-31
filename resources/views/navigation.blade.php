@@ -11,10 +11,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ route('organizers.index') }}" class="nav-link">Organizador</a>
+                            <a href="{{ route('events.index') }}" class="nav-link">Evento</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('events.index') }}" class="nav-link">Evento</a>
+                            <a href="{{ route('organizers.index') }}" class="nav-link">Organizador</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('athletes.index') }}" class="nav-link">Atleta</a>

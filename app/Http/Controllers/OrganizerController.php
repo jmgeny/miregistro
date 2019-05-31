@@ -11,14 +11,16 @@ class OrganizerController extends Controller
     public function index() {
 
     	$organizers = Organizer::all();
-
     	return view('organizer.index', compact('organizers'));
     }
 
+    public function show(Organizer $organizer) {
+
+        return view('organizer.show',compact('organizer'));
+    }    
+
     public function create() {
-
-        // $users = User::all();
-
+        
         return view('organizer.create',compact('users'));
 
     }

@@ -80,8 +80,8 @@
 
                 <div class="links">
                     @guest
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                     @else
                         
                                 <div class="links">

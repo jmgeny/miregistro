@@ -6,13 +6,12 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="#" class="btn btn-primary float-right">Ver</a>
-                    <h4>Editar Organizador</h4>
+                    <a href="{{ route('events.show',$event->id) }}" class="btn btn-primary float-right">Ver</a>
+                    <h4>Editar Evento</h4>
                 </div>
-
                 <div class="card-body">
-                    {!! Form::model($organizer, ['route' => ['organizers.update', $organizer->id], 'method' =>'PUT', 'files' => true]) !!}
-                    @include('organizer.partials.form')
+                    {!! Form::model($event, ['route' => ['events.update', $event->id], 'method' =>'PUT', 'files' => true]) !!}
+                    @include('event.partials.form')
                     {!! Form::close() !!}   
                 </div> {{-- card-body --}}
             </div> {{-- card --}}
