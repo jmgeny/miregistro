@@ -13,6 +13,10 @@ class EventController extends Controller
     	return view('event.index',compact('events'));
     }
 
+    public function create() {
+        return view('event.create');
+    }
+
     public function edit(Event $event) {
 
     	return view('event.edit', compact('event'));

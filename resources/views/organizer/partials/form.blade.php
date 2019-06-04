@@ -1,4 +1,9 @@
   <div class="form-group">
+    {!! Form::label('logo','Logo Organizador') !!}
+    {!! Form::file('logo') !!}
+  </div>
+
+  <div class="form-group">
     {!! Form::label('user_id', 'Usuario') !!}
     {!! Form::select('user_id',\App\User::orderBy('id')->pluck('name','id')
     ,null,['class' => 'form-control']) !!}

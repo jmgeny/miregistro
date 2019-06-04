@@ -6,7 +6,7 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header"> 
-                    <a href="#" class="btn btn-primary float-right">Crear</a>
+                    <a href="{{ route('events.create') }}" class="btn btn-primary float-right">Crear</a>
                     <h4>Eventos</h4>
                 </div>
 
@@ -38,7 +38,8 @@
                         </tr>
                         @endforeach
                     </tbody>
-                </table>   
+                </table> 
+                  
                 </div>
             </div>
         </div>

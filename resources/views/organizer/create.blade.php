@@ -6,12 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    <a href="{{ route('organizers.index') }}" class="btn btn-primary float-right">Listar</a>
                     <h4>Crear Organizador</h4>
                 </div>
 
                 <div class="card-body">
-                    {!! Form::open(['route' => 'organizers.store']) !!}
-                     @include('organizer.partials.form')
+                    {!! Form::open(['route' => 'organizers.store', 'files' => true]) !!}
+                    	@include('organizer.partials.form')
                     {!! Form::close() !!}   
                 </div> {{-- card-body --}}
             </div> {{-- card --}}

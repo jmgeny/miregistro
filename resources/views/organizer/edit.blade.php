@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="#" class="btn btn-primary float-right">Ver</a>
+                    <a href="{{ route('organizers.index') }}" class="btn btn-primary float-right">Listar</a>
                     <h4>Editar Organizador</h4>
                 </div>
 
