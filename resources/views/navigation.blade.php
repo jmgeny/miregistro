@@ -18,7 +18,27 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('athletes.index') }}" class="nav-link">Atleta</a>
-                        </li>                                                                        
+                        </li>                                                                       
+                    </ul>
+                    <ul class="navbar-nav float-right">
+                    @guest
+
+                        <a href="{{ route('login') }}">Ingresar</a>
+                        <a href="{{ route('register') }}">Registrarse</a>
+                    @else
+                        
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Salir') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
+                    @endguest                        
                     </ul>
                     
                 </div>

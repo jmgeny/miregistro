@@ -6,13 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('events.index') }}" class="btn btn-primary float-right">Listar</a>
-                    <h4>Editar Evento</h4>
+                    <a href="{{ route('athletes.index') }}" class="btn btn-primary float-right">Listar</a>
+                    <h4>Editar Atleta</h4>
                 </div>
 
                 <div class="card-body">
-                    {!! Form::model($event, ['route' => ['events.update', $event->id], 'method' =>'PUT', 'files' => true]) !!}
-                    @include('event.partials.form')
+                    {!! Form::model($athlete, ['route' => ['athletes.update', $athlete->id], 'method' =>'PUT', 'files' => true]) !!}
+                    @include('athlete.partials.form')
                     {!! Form::close() !!}   
                 </div> {{-- card-body --}}
             </div> {{-- card --}}

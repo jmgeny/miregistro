@@ -28,6 +28,8 @@ class CreateEventsTable extends Migration
             $table->string('direccion')->nullable();// Local Info
             $table->string('contacto')->nullable();// Contacto
 
+            $table->date('cierre');
+
             $table->timestamps();
             
             $table->foreign('organizer_id')->references('id')->on('organizers');

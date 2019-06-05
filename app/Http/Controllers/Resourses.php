@@ -3,20 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Athlete;
 
-class AthleteController extends Controller
+class Resourses extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */    
-    public function index() {
-
-    	$athletes = Athlete::orderBy('apellido','ASC')->paginate(10);
-
-    	return view('athlete.index',compact('athletes'));
+     */
+    public function index()
+    {
+        //
     }
 
     /**
@@ -46,10 +43,9 @@ class AthleteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Athlete $athlete)
+    public function show($id)
     {
-
-        return view('athlete.show',compact('athlete'));
+        //
     }
 
     /**
@@ -58,9 +54,9 @@ class AthleteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Athlete $athlete)
+    public function edit($id)
     {
-        return view('athlete.edit',compact('athlete'));
+        //
     }
 
     /**
@@ -83,11 +79,6 @@ class AthleteController extends Controller
      */
     public function destroy($id)
     {
-        $athlete = Athlete::findOrFail($id);
-        $athlete->status = 0;
-        $athlete->save();
-
-        return redirect()->route('athletes.index')
-                         ->with('info', 'El atleta fue desactivado');
-    }    
+        //
+    }
 }

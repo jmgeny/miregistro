@@ -38,6 +38,7 @@ class User extends Authenticatable
     ];
 
     public function athlete() {
+        
         return $this->hasOne(Athlete::class);
     }
 

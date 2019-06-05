@@ -16,10 +16,8 @@
                         <tr>
                             <th>Organizador</th>
                             <th>Deporte</th>
-                            <th>Nombre</th>
+                            <th>Nombre del Evento</th>
                             <th>Fecha</th>
-                            <th>Cantidad</th>
-                            <th>Inscribirse</th>
                             <th>Editar</th>
                             <th>Ver</th>
                         </tr>
@@ -27,19 +25,17 @@
                     <tbody>
                         @foreach($events as $event)
                         <tr>
-                            <td>{{ $event->organizer->nombre }}</td>
+                            <td><a href="{{ route('organizers.show',$event->organizer->id) }}">{{ $event->organizer->nombre }}</a></td>
                             <td>{{ $event->sport->nombre }}</td>
                             <td>{{ $event->nombre }}</td>
                             <td>{{ $event->fecha }}</td>
-                            <td>cantidad</td>
-                            <td>inscribirse</td>
                             <td><a href="{{ route('events.edit',$event->id) }}" class="btn btn-warning">Editar</a></td>
                             <td><a href="{{ route('events.show',$event->id) }}" class="btn btn-primary">Ver</a></td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table> 
-                  
+                  {{ $events->links() }}
                 </div>
             </div>
         </div>
