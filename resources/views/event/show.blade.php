@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+    <h1>Evento</h1>
     <div class="card">
         <div class="card-header">
             <a href="{{ route('events.index') }}" class="btn btn-primary float-right">Listar</a>

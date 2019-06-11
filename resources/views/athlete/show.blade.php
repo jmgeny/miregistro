@@ -10,16 +10,18 @@
 		</div>
 		
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-6">
       <div class="card">
-        <div class="card-header"><a href="{{ route('athletes.edit',$athlete->id) }}" class="btn btn-primary float-right">Editar</a>{{ $athlete->nombre }} {{ $athlete->apellido }}</div>
-        <div class="card-body"><img src=" {{ Storage::url($athlete->avatar) }} " alt="{{ $athlete->apellido }}" width="100%" ></div> 
+        {{-- <div class="card-header"></div> --}}
+        <div class="card-body">
+          <img src=" {{ $athlete->avatar }} " alt="{{ $athlete->apellido }}" width="100%" >
+        </div> 
         <div class="card-footer">{{ $athlete->user->email }}</div>
       </div>		
 	</div>
-	<div class="col-md-4">
+	<div class="col-md-6">
 	      <div class="card">
-        <div class="card-header">Datos</div>
+        <div class="card-header"><a href="{{ route('athletes.edit',$athlete->id) }}" class="btn btn-primary float-right">Editar</a>{{ $athlete->nombre }} {{ $athlete->apellido }}</div>
         <div class="card-body">
           <table class="table">
             <tbody>
@@ -41,7 +43,7 @@
               </tr>
               <tr>
                 <td><mark>Genero</mark></td>
-                  @if($athlete->genero === 0)
+                  @if($athlete->genero === 'F')
                     <td>Femenino</td>
                   @else
                     <td>Masculino</td>
@@ -52,12 +54,20 @@
                 <td>{{ $athlete->telefono }}</td>
               </tr>
               <tr>
-                <td><mark>Estado</mark></td>
-                @if($athlete->state === 0)
-                  <td>Inactivo</td>
-                @else
-                  <td>Activo</td>
-                @endif
+                            <td>@if($athlete->status === 1)
+                                <form action="{{ route('athletes.destroy', $athlete->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-danger">Eliminar</button>                                
+                                </form>
+                                @else
+                                <form action="{{ route('athletes.destroy', $athlete->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button class="btn btn-success">Activar</button>                                
+                                </form>                                
+                                @endif
+                            </td>
               </tr>
             </tbody>
           </table>

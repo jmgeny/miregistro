@@ -13,16 +13,6 @@
     {!! Form::text('dni', null, ['class'=> 'form-control']) !!}
   </div>
 
-   <div class="form-group">
-    {!! Form::label('email', 'e-mail') !!}
-    {!! Form::text('email', null, ['class'=> 'form-control']) !!}
-  </div>
-  
-  <div class="form-group">
-    {!! Form::label('direccion', 'Dirección') !!}
-    {!! Form::text('direccion', null, ['class'=> 'form-control']) !!}
-  </div>      
-
   <div class="form-group">
     {!! Form::label('nacimiento', 'Fecha de nacimiento') !!}
     {!! Form::date('nacimiento', null, ['class'=> 'form-control']) !!}
@@ -30,8 +20,13 @@
 
   <div class="form-group">
     {!! Form::label('genero', 'Genero') !!}
-    {!! Form::select('genero', ['0'=> 'Hombre', '1'=>'Mujer'],null, ['class'=> 'form-control'] ) !!}
+    {!! Form::select('genero', ['M'=> 'Hombre', 'F'=>'Mujer'],null, ['class'=> 'form-control'] ) !!}
   </div>
+  
+  <div class="form-group">
+    {!! Form::label('direccion', 'Dirección') !!}
+    {!! Form::text('direccion', null, ['class'=> 'form-control']) !!}
+  </div>      
 
   <div class="form-group">
     {!! Form::label('telefono', 'Teléfono') !!}
@@ -41,12 +36,7 @@
   <div class="form-group">
   	{!! Form::label('avatar', 'Foto') !!}
   	{!! Form::file('avatar') !!}
-  </div>
-
-  <div class="form-group">
-    {!! Form::label('state','Activo') !!}
-    {!! Form::checkbox('state') !!}
-  </div>   
+  </div>  
   
   <div class="form-group">
     {!! Form::submit('Enviar',['class' => 'btn btn-primary']) !!}

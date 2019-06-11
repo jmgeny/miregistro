@@ -11,8 +11,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Apellido</th>
-                            <th>Nombre</th>
+                            <th>Apellido y Nombre</th>
                             <th>dni</th>
                             <th>email</th>
                             <th>Ver</th>
@@ -23,10 +22,9 @@
                     <tbody>
                         @foreach($athletes as $athlete)
                         <tr>
-                             <td>{{ $athlete->apellido }}</td>
-                            <td>{{ $athlete->nombre }}</td>
+                             <td>{{ $athlete->apellido }}, {{ $athlete->nombre }}</td>
                             <td>{{ $athlete->dni }}</td>
-                            <td>{{ $athlete->email }}</td>
+                            <td>{{ $athlete->user->email }}</td>
                             <td><a href="{{ route('athletes.show',$athlete->id) }}" class="btn btn-primary">Ver</a></td>
                             <td><a href="{{ route('athletes.edit',$athlete->id) }}" class="btn btn-warning">Editar</a></td>
                             <td>@if($athlete->status === 1)
@@ -35,7 +33,8 @@
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button class="btn btn-danger">Eliminar</button>                                
                                 </form>
-                            @endif</td>
+                                @endif
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Athlete;
+
+
 
 class AthleteController extends Controller
 {
@@ -26,7 +30,7 @@ class AthleteController extends Controller
      */
     public function create()
     {
-        //
+        return view('athlete.create');
     }
 
     /**
@@ -37,7 +41,18 @@ class AthleteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $athlete = Athlete::create($request->all());
+        $athlete->user_id = Auth::user()->id;
+
+        if ($request->file('avatar')) {
+            $path = Storage::disk('public')->put('avatar', $request->file('avatar'));
+            $athlete->fill(['avatar' => asset($path)]);
+        }
+
+        $athlete->save();
+
+        return redirect()->route('athletes.show',$athlete->id)->with('info','Se creo un nuevo athleta');
     }
 
     /**
@@ -70,9 +85,17 @@ class AthleteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Athlete $athlete)
     {
-        //
+        $athlete->update($request->all());
+
+        if ($request->file('avatar')) {
+            $path = Storage::disk('public')->put('avatar', $request->file('avatar'));
+            $athlete->fill(['avatar' => asset($path)])->save();
+        }
+
+        return redirect()->route('athletes.show',$athlete->id)
+                         ->with('info','El atleta fue actualizado');
     }
 
     /**
@@ -81,13 +104,17 @@ class AthleteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Athlete $athlete)
     {
-        $athlete = Athlete::findOrFail($id);
-        $athlete->status = 0;
+        
+        if ($athlete->status === 0) 
+            $athlete->status = 1;
+         else 
+            $athlete->status = 0;
+    
         $athlete->save();
 
-        return redirect()->route('athletes.index')
+        return redirect()->route('athletes.show',$athlete->id)
                          ->with('info', 'El atleta fue desactivado');
     }    
 }

@@ -17,6 +17,7 @@
                             <th>Organizador</th>
                             <th>Dirección</th>
                             <th>e-mail</th>
+                            <th>Eventos</th>
                             <th>Editar</th>
                             <th>Ver</th>
                         </tr>
@@ -28,6 +29,7 @@
                             <td>{{ $organizer->nombre }}</td>
                             <td>{{ $organizer->direccion }}</td>
                             <td>{{ $organizer->mail }}</td>
+                            <td>{{ $organizer->events()->count() }}</td>
                             <td><a href="{{ route('organizers.edit',$organizer->id) }}" class="btn btn-warning">Editar</a></td>
                             <td><a href="{{ route('organizers.show',$organizer->id) }}" class="btn btn-primary">Ver</a></td>
                         </tr>
