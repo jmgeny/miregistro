@@ -26,7 +26,9 @@
                         <a href="{{ route('login') }}">Ingresar</a>
                         <a href="{{ route('register') }}">Registrarse</a>
                     @else
-                        
+                                
+                                    <h3>{{ Auth::user()->name }}</h3>
+                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

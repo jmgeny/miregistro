@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
 	protected $fillable = [
-		'organizer_id','sport_id','nombre','fecha','descripcion','cronograma','direccion','contacto',
+		'organizer_id','sport_id','specification_id','nombre','fecha','descripcion','cronograma','direccion','contacto',
 	];
 
 
@@ -24,6 +24,10 @@ class Event extends Model
     public function sport() {
     	return $this->belongsTo(Sport::class);
     }
+
+    public function specification() {
+        return $this->belongsTo(Specification::class);
+    }    
 
     public function city() {
         return $this->belongsTo(City::class);

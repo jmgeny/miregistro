@@ -60,3 +60,12 @@ Route::get('/athletes/{athlete}/edit','AthleteController@edit')->name('athletes.
 Route::put('/athletes/{athlete}','AthleteController@update')->name('athletes.update');
 
 Route::delete('/athletes/{athlete}','AthleteController@destroy')->name('athletes.destroy');
+
+// Inscripciones
+Route::get('/inscriptions/index','InscriptionController@index')->name('inscriptions.index');
+
+Route::get('inscriptions/create','InscriptionController@create')->name('inscriptions.create');
+Route::post('/inscriptions','InscriptionController@store')->name('inscriptions.store');
+
+Route::get('/inscriptions/{event}','InscriptionController@show')->name('inscriptions.show');
+Route::get('/inscriptions/{event}','InscriptionController@registrar')->name('inscriptions.registrar');

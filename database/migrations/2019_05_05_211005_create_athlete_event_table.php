@@ -17,6 +17,8 @@ class CreateAthleteEventTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('athlete_id');
             $table->unsignedInteger('event_id');
+            $table->string('status');
+
 
             $table->timestamps();
 

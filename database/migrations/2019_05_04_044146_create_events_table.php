@@ -16,7 +16,8 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('organizer_id');
-            $table->unsignedInteger('sport_id');// ## Evento
+            $table->unsignedInteger('sport_id');// Deporte 
+            $table->unsignedInteger('specification_id');// Distancia
             $table->unsignedInteger('city_id');
 
             $table->string('nombre');// ## Portada
@@ -35,6 +36,7 @@ class CreateEventsTable extends Migration
             $table->foreign('organizer_id')->references('id')->on('organizers');
             $table->foreign('sport_id')->references('id')->on('sports');
             $table->foreign('city_id')->references('id')->on('cities');
+            $TABLE->foreign('specification_id')->references('id')->on('specifications');
         });
     }
 

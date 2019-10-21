@@ -7,6 +7,10 @@
     {!! Form::select('sport_id', \App\Sport::pluck('nombre','id') ,null, ['class'=> 'form-control']) !!}
   </div>
   <div class="form-group">
+    {!! Form::label('specification_id','Distancia / Specificación') !!}
+    {!! Form::select('specification_id', \App\Specification::pluck('descripcion','id'),null,['class'=>'form-control']) !!}
+  </div>
+  <div class="form-group">
     {!! Form::label('city_id','Ciudad') !!}
     {!! Form::select('city_id', \App\City::pluck('nombre','id') ,null, ['class'=> 'form-control']) !!}
   </div>

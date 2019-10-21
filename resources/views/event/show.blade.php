@@ -5,19 +5,19 @@
     <h1>Evento</h1>
     <div class="card">
         <div class="card-header">
-            <a href="{{ route('events.index') }}" class="btn btn-primary float-right">Listar</a>
+            <a href="{{ route('inscriptions.show',$event->id) }}" class="btn btn-primary float-right">Inscribirme</a>
             <h4>{{ $event->nombre }} organizado por <a href="{{ route('organizers.show',$event->organizer->id) }}">{{ $event->organizer->nombre }}</a></h4>
             <h6><i class="far fa-calendar-alt"></i> {{ $event->fecha }} - <i class="fas fa-city"></i> {{ $event->city->nombre }}</h6>
         </div>
         <div class="card-body borde">
             <div class="row text-center">
                 <div class="col-sm-4">
-                    <h5 class="card-title">Organizador</h5>
-                    <p class="card-text">{{ $event->organizer->nombre }}</p>
-                </div>
-                <div class="col-sm-4">
                     <h5 class="card-title">Deporte</h5>
                     <p class="card-text">{{ $event->sport->nombre }}</p>
+                </div>
+                <div class="col-sm-4">
+                    <h5 class="card-title">{{ $event->specification->nombre }}</h5>
+                    <p class="card-text">{{ $event->specification->descripcion }}</p>
                 </div>
                 <div class="col-sm-4">    
                     <h5 class="card-title">Dirección</h5>
