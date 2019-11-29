@@ -12,9 +12,9 @@ class InscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Event $event)
     {
-        //
+        return view('inscription.index', compact('event'));
     }
 
     /**
@@ -45,8 +45,8 @@ class InscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Event $event)
-    {
+    public function show(Event $event) {
+
         return view('inscription.show', compact('event'));
     }
 
@@ -56,9 +56,9 @@ class InscriptionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        return view('inscription.show', compact('event'));
+        // return view('inscription.edit', compact('event'));
     }
 
     /**

@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
     public function index() {
 
-    	$events = Event::orderBy('fecha','DESC')->paginate(5);
+    	$events = Event::withCount('athletes')->orderBy('date','DESC')->paginate(5);
 
     	return view('event.index',compact('events'));
+        // return view('event.index');
     }
 
     public function create() {
@@ -41,6 +43,6 @@ class EventController extends Controller
 
     public function show(Event $event) {
 
-        return view('event.show', compact('event'));
+       return view('event.show', ['event' => $event]);
     }
 }

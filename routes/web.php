@@ -1,5 +1,4 @@
 <?php
-use App\Event;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,11 +9,23 @@ use App\Event;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/prueba', function() {
+	return 'Esto es el retorno';
+});
 
 Route::get('/', function () {
-	$events = Event::orderBy('id','ASC')->paginate(5);
-    return view('/welcome',compact('events'));
-});
+$fechaHoy = new DateTime();
+	// $events = App\Event::orderBy('id','ASC')->paginate(10);
+	// $events = App\Event::orderBy('id','ASC')->with('organizer', 'sport')->paginate(10);
+	$eventsFut = App\Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(10);
+
+	$eventPas = App\Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->paginate(10);
+
+    return view('welcome',[
+    				'eventsFut' => $eventsFut,
+    				'eventPas' => $eventPas]);
+
+})->name('welcome');
 
 Auth::routes();
 
@@ -62,10 +73,13 @@ Route::put('/athletes/{athlete}','AthleteController@update')->name('athletes.upd
 Route::delete('/athletes/{athlete}','AthleteController@destroy')->name('athletes.destroy');
 
 // Inscripciones
-Route::get('/inscriptions/index','InscriptionController@index')->name('inscriptions.index');
+Route::get('/inscriptions/index/{event}','InscriptionController@index')->name('inscriptions.index');
 
-Route::get('inscriptions/create','InscriptionController@create')->name('inscriptions.create');
-Route::post('/inscriptions','InscriptionController@store')->name('inscriptions.store');
+Route::get('/inscriptions/create','InscriptionController@create')->name('inscriptions.create');
+
+// Route::post('/inscriptions','InscriptionController@store')->name('inscriptions.store');
 
 Route::get('/inscriptions/{event}','InscriptionController@show')->name('inscriptions.show');
-Route::get('/inscriptions/{event}','InscriptionController@registrar')->name('inscriptions.registrar');
+
+Route::get('/inscriptions/{event}/edit','InscriptionController@edit')->name('inscriptions.edit');
+// Route::get('/inscriptions/{event}','InscriptionController@registrar')->name('inscriptions.registrar');

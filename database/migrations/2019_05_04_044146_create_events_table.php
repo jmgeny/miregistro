@@ -20,10 +20,10 @@ class CreateEventsTable extends Migration
             $table->unsignedInteger('specification_id');// Distancia
             $table->unsignedInteger('city_id');
 
-            $table->string('nombre');// ## Portada
-            $table->date('fecha');// ## Portada
+            $table->string('name');// ## Portada
+            $table->date('date');// ## Portada
 
-            $table->text('descripcion')->nullable();// ## Evento 
+            $table->text('description')->nullable();// ## Evento 
             $table->text('cronograma')->nullable();// ## Evento
 
             $table->string('direccion')->nullable();// Local Info
@@ -36,7 +36,7 @@ class CreateEventsTable extends Migration
             $table->foreign('organizer_id')->references('id')->on('organizers');
             $table->foreign('sport_id')->references('id')->on('sports');
             $table->foreign('city_id')->references('id')->on('cities');
-            $TABLE->foreign('specification_id')->references('id')->on('specifications');
+            $table->foreign('specification_id')->references('id')->on('specifications');
         });
     }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use DateTime;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('id','ASC')->paginate(5);
-        return view('home', compact('events'));
+        $fechaHoy = new DateTime();
+
+        // $events = Event::orderBy('id','ASC')->with('organizer','sport')->paginate(3);
+
+        $eventsFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(7);
+
+        $eventsPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(7);
+
+        return view('home', ['eventsFut' => $eventsFut, 'eventsPas' => $eventsPas]);
     }
 }

@@ -18,7 +18,8 @@ class CreateAthleteEventTable extends Migration
             $table->unsignedInteger('athlete_id');
             $table->unsignedInteger('event_id');
             $table->string('status');
-
+// tengo que tener los datos del atletas porque pueden cambiar por ej la categoria
+            
 
             $table->timestamps();
 

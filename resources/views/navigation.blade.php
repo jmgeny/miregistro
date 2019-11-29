@@ -11,7 +11,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="{{ route('events.index') }}" class="nav-link">Evento</a>
+                            <a href="{{ route('events.index') }}" class="nav-link">Eventos</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('organizers.index') }}" class="nav-link">Organizador</a>
