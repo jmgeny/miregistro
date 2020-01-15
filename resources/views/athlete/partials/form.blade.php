@@ -4,8 +4,8 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('nombre', 'Nombre') !!}
-    {!! Form::text('nombre', null, ['class'=> 'form-control']) !!}
+    {!! Form::label('name', 'Nombre') !!}
+    {!! Form::text('name', null, ['class'=> 'form-control']) !!}
   </div>
 
    <div class="form-group">
@@ -14,8 +14,8 @@
   </div>
 
   <div class="form-group">
-    {!! Form::label('nacimiento', 'Fecha de nacimiento') !!}
-    {!! Form::date('nacimiento', null, ['class'=> 'form-control']) !!}
+    {!! Form::label('date', 'Fecha de nacimiento') !!}
+    {!! Form::date('date', null, ['class'=> 'form-control']) !!}
   </div>
 
   <div class="form-group">

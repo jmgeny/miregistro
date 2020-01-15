@@ -3,10 +3,12 @@
 @section('content')
 <div class="container">
     <h1>Evento</h1>
+    {{-- @include('event.partials.info') --}}
     <div class="card">
       <div class="card-header text-center">
         <h5 class="card-title">{{ $event->name }}</h5>
         <h6><i class="far fa-calendar-alt"></i> {{ $event->date }} - <i class="fas fa-city"></i> {{ $event->city->nombre }}</h6>
+        <h3>Fecha Hoy: {{ date('Y-m-d') }} fecha del evento: {{ $event->date }}</h3>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ $event->athletes->count() }} Inscriptos</h5>
@@ -30,13 +32,19 @@
             </table>
       </div>
       <div class="card-footer text-muted">
-        @guest
+{{--         @guest
             <a href="{{ route('login') }}" class="btn btn-primary">Ingresar</a>
             <a href="{{ route('register') }}" class="btn btn-primary">Registrarse</a>
         @else
-            <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Anotarme</a>
-        @endguest
-        {{-- me inscribo y voy directo a editar mis datos --}}
+            <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Iniciar Registro</a>
+        @endguest --}}
+
+        @if($event->date >= date('Y-m-d'))
+            <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Registrarse</a>
+        @else
+            <a href="{{ route('events.index') }}" class="btn btn-warning">Evento Pasado</a>
+        @endif
+
       </div>
     </div>
 </div>

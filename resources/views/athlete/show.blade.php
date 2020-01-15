@@ -14,7 +14,7 @@
       <div class="card">
         {{-- <div class="card-header"></div> --}}
         <div class="card-body">
-          <img src=" {{ $athlete->avatar }} " alt="{{ $athlete->apellido }}" width="100%" >
+          <img src=" {{ $athlete->avatar }} " alt="{{ $athlete->apellido }}" width="50%" >
         </div> 
         <div class="card-footer">{{ $athlete->user->email }}</div>
       </div>		
@@ -39,7 +39,7 @@
               </tr>
               <tr>
                 <td><mark>Fecha de Nacimiento</mark></td>
-                <td>{{ $athlete->nacimiento }}</td>
+                <td>{{ $athlete->date }}</td>
               </tr>
               <tr>
                 <td><mark>Genero</mark></td>

@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Event;
 use Carbon\Carbon;
+use DateTime;
 
 class EventController extends Controller
 {
     public function index() {
+        $fechaHoy = new DateTime();
 
-    	$events = Event::withCount('athletes')->orderBy('date','DESC')->paginate(5);
+    	// $events = Event::withCount('athletes')->orderBy('date','DESC')->paginate(5);
 
-    	return view('event.index',compact('events'));
+        $eventFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->paginate(10);
+
+        $eventPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->paginate(10);
+
+    	return view('event.index',compact('eventFut','eventPas'));
         // return view('event.index');
     }
 
@@ -42,7 +48,7 @@ class EventController extends Controller
     }
 
     public function show(Event $event) {
-
-       return view('event.show', ['event' => $event]);
+        $fechaHoy = new DateTime();
+       return view('event.show', ['event' => $event,'fechaHoy' => $fechaHoy]);
     }
 }

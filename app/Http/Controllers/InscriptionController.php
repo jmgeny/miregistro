@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Event;
+use App\Athlete;
+use Auth;
 
 class InscriptionController extends Controller
 {
@@ -14,9 +16,38 @@ class InscriptionController extends Controller
      */
     public function index(Event $event)
     {
-        return view('inscription.index', compact('event'));
+        $id = Auth::id();
+        $athlete = Athlete::find($id);
+
+        return view('inscription.index', compact('event','athlete'));
     }
 
+    public function verDNI(Request $request)
+    {
+        
+        $athletes = Athlete::where('dni','=',$request->numeroDni)->get();
+
+        if (count($athletes) == 1) {
+            dd('Voy a verificar los datos del usuario encontrado: ');
+        } else {
+            dd('Voy a registrar el usuario con DNI: '. $request->numeroDni );
+        }
+ 
+             return 'no se encontro';
+    
+    }
+
+    public function inscribir(Event $event) 
+    {
+        $idAthlete = Auth::id();
+        $athlete = Athlete::find($idAthlete);
+
+        $event->athletes()->attach($idAthlete);
+
+        return redirect()->route('events.show',compact('event'))
+                         ->with('info','Se agrego el atleta: ' . $athlete->name);
+        // return view('event.show', compact('event'));
+    }
     /**
      * Show the form for creating a new resource.
      *

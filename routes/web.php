@@ -75,11 +75,16 @@ Route::delete('/athletes/{athlete}','AthleteController@destroy')->name('athletes
 // Inscripciones
 Route::get('/inscriptions/index/{event}','InscriptionController@index')->name('inscriptions.index');
 
-Route::get('/inscriptions/create','InscriptionController@create')->name('inscriptions.create');
+Route::post('/inscriptions/verDNI','InscriptionController@verDNI')->name('inscriptions.verDNI');
+// verifico si el DNI esta en la base de datos
+
+Route::post('/inscrptions/inscribir/{event}','InscriptionController@inscribir')->name('inscriptions.inscribir');
+
+// Route::get('/inscriptions/create','InscriptionController@create')->name('inscriptions.create');
 
 // Route::post('/inscriptions','InscriptionController@store')->name('inscriptions.store');
 
-Route::get('/inscriptions/{event}','InscriptionController@show')->name('inscriptions.show');
+// Route::get('/inscriptions/{event}','InscriptionController@show')->name('inscriptions.show');
 
-Route::get('/inscriptions/{event}/edit','InscriptionController@edit')->name('inscriptions.edit');
+// Route::get('/inscriptions/{event}/edit','InscriptionController@edit')->name('inscriptions.edit');
 // Route::get('/inscriptions/{event}','InscriptionController@registrar')->name('inscriptions.registrar');
