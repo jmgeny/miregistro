@@ -8,7 +8,7 @@ class Organizer extends Model
 {
 
     protected $fillable = [
-        'nombre', 'mail', 'direccion','telefono','logo','status','user_id',
+        'name', 'mail', 'direccion','telefono','logo','status','user_id',
     ];
 
     public function events() {

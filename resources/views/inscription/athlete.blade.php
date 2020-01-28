@@ -1,4 +1,5 @@
 @extends('layouts.principal')
+{{-- es una copia del edit, pero para que el usuario pueda verificar sus datos. --}}
 
 @section('content')
 <div class="container">
@@ -7,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <a href="{{ route('athletes.index') }}" class="btn btn-primary float-right">Listar</a>
-                    <h4>Editar Atleta</h4>
+                    <h4>Verifique sus datos</h4>
                 </div>
                 <div class="card-body">
                     {!! Form::model($athlete, ['route' => ['athletes.update', $athlete->id], 'method' =>'PUT', 'files' => true]) !!}

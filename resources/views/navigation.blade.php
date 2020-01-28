@@ -1,7 +1,7 @@
-        <nav class="navbar navbar-expand-md navbar-laravel navbar-dark bg-primary">
+        <nav class="navbar navbar-expand-md navbar-laravel navbar-dark jmg-primary">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Mi Registro
+                    <h3>Mi Registro</h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -22,9 +22,8 @@
                     </ul>
                     <ul class="navbar-nav float-right">
                     @guest
-
-                        <a href="{{ route('login') }}">Ingresar</a>
-                        <a href="{{ route('register') }}">Registrarse</a>
+                        <a href="{{ route('login') }}" class="btn btn-primary">Ingresar</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary">Registrarse</a>
                     @else
                                 
                                     <h3>{{ Auth::user()->name }}</h3>

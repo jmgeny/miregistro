@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
+                        {{-- Nombre --}}
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
@@ -24,7 +24,35 @@
                                 @endif
                             </div>
                         </div>
+                        {{-- apellido --}}
+                        <div class="form-group row">
+                            <label for="apellido" class="col-md-4 col-form-label text-md-right">{{ __('Apellido') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control{{ $errors->has('apellido') ? ' is-invalid' : '' }}" name="apellido" value="{{ old('apellido') }}" required autofocus>
+
+                                @if ($errors->has('apellido'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('apellido') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        {{-- apellido --}}
+                        <div class="form-group row">
+                            <label for="dni" class="col-md-4 col-form-label text-md-right">{{ __('DNI') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dni" type="text" class="form-control{{ $errors->has('dni') ? ' is-invalid' : '' }}" name="dni" value="{{ old('dni') }}" required autofocus>
+
+                                @if ($errors->has('dni'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dni') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>                                                
+                        {{-- email --}}
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
@@ -38,7 +66,44 @@
                                 @endif
                             </div>
                         </div>
-
+                        {{-- Genero --}}
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right" for="radio1"></label>
+    <div class="col-md-6">
+    <div class="form-check">
+      <label class="form-check-label" for="radio1">
+        <input type="radio" class="form-check-input" id="radio1" name="genero" value="M" checked>Masculino
+      </label>
+    </div>
+    </div>    
+</div>    
+<div class="form-group row">
+    <label class="col-md-4 col-form-label text-md-right" for="radio2"></label>
+    <div class="col-md-6">
+    <div class="form-check">
+      <label class="form-check-label" for="radio2">
+        <input type="radio" class="form-check-input" id="radio2" name="genero" value="F" checked>Femenino
+      </label>
+    </div>
+    </div>    
+</div>
+    
+                       {{-- fecha de nacimento --}}
+                        <div class="form-group row">
+                            <label for="date" class="col-md-4 col-form-label text-md-right">{{ __('Fecha Nacimiento') }}</label>
+                            
+                            <div class="col-md-6">
+                                <input type="date" id="date" type="date" class="form-control{{ $errors->has('date') ?' is-invalid' : '' }}" name="date" value="{{ old('date') }}">
+                                
+                                @if ($errors->has('date'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('date') }}</strong>
+                                    </span>
+                                @endif
+                                    
+                            </div>                            
+                        </div>
+                        {{-- password --}}
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -52,7 +117,7 @@
                                 @endif
                             </div>
                         </div>
-
+                        {{-- confirmar password --}}
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmar Password') }}</label>
 

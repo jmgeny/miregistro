@@ -26,7 +26,7 @@
                         @foreach($organizers as $organizer)
                         <tr>
                             <td>{{ $organizer->user->name }}</td>
-                            <td>{{ $organizer->nombre }}</td>
+                            <td>{{ $organizer->name }}</td>
                             <td>{{ $organizer->direccion }}</td>
                             <td>{{ $organizer->mail }}</td>
                             <td>{{ $organizer->events()->count() }}</td>

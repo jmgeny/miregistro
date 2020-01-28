@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    <h3>Inscripcion a Evento</h3>
+{{--     <h3>Inscripcion a Evento</h3>
     <hr>
-    <section class="shadow">
+ --}}    <section class="shadow">
         {{-- <p>Si esta conectado muestro los datos del atleta para verificalo</p> --}}
-        <h2>{{ $event->name }}</h2>
+    <h2>Inscribirme a <strong>{{ $event->name }}</strong></h2>
     </section>
     <hr>
     <section>
@@ -17,7 +17,7 @@
                 <form action="{{ route('inscriptions.verDNI') }}" method="POST">
                     {{ csrf_field() }}
                     <div class="form-group mb-2">
-                        <label for="exampleInputEmail1">DNI</label>
+                        <label for="exampleInputEmail1">Ingresar DNI</label>
                         <input type="number" name="numeroDni" class="form-control" id="numeroDni" aria-describedby="dniHelp" placeholder="Ingresar el DNI">
                         {{-- <small id="emailHelp" class="form-text text-muted">Ingrese el DNI</small> --}}
                     </div>

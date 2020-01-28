@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Athlete extends Model
 {
-	protected $fillable = ['name','apellido','dni','direccion','date','genero','telefono','avatar',];
+	protected $fillable = ['name','apellido','dni','direccion','date','genero','telefono','avatar','user_id',];
 
     public function events() {
     	return $this->belongsToMany(Event::class);

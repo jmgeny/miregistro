@@ -11,13 +11,14 @@
                     <h5 class="card-title">{{ $event->name }}</h5>
                     <h6>Inscriptos: {{ $event->athletes_count }}</h6>
                   </div>
-                  <img src="https://lorempixel.com/90/90" class="card-img-top" alt="...">
+                  <img src="http://placehold.it/300x200" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6><i class="far fa-calendar-alt"></i> {{ $event->date }} - <i class="fas fa-city"></i> {{ $event->city->name }} </h6>
                     <p class="card-text">{{ $event->description }}</p>
                   </div>
                   <div class="card-footer text-muted">
-                    <a href="{{ route('events.show',$event->id) }}" class="btn btn-primary">Ver</a>
+                    <a href="{{ route('events.show',$event->id) }}" class="btn btn-success">Ver</a>
+                    <a href="{{ route('events.edit',$event->id) }}" class="btn btn-primary">Editar</a>
                   </div>
                 </div>
             </div>
@@ -33,13 +34,14 @@
                     <h5 class="card-title">{{ $event->name }}</h5>
                     <h6>Inscriptos: {{ $event->athletes_count }}</h6>
                   </div>
-                  <img src="https://lorempixel.com/90/90" class="card-img-top" alt="...">
+                  <img src="http://placehold.it/300x200" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h6><i class="far fa-calendar-alt"></i> {{ $event->date }} - <i class="fas fa-city"></i> {{ $event->city->name }} </h6>
                     <p class="card-text">{{ $event->description }}</p>
                   </div>
                   <div class="card-footer text-muted">
-                    <a href="{{ route('events.show',$event->id) }}" class="btn btn-primary">Ver</a>
+                    <a href="{{ route('events.show',$event->id) }}" class="btn btn-success">Ver</a>
+                    <a href="{{ route('events.edit',$event->id) }}" class="btn btn-primary">Editar</a>
                   </div>
                 </div>
             </div>

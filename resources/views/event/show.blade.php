@@ -2,13 +2,17 @@
 
 @section('content')
 <div class="container">
-    <h1>Evento</h1>
-    {{-- @include('event.partials.info') --}}
     <div class="card">
       <div class="card-header text-center">
-        <h5 class="card-title">{{ $event->name }}</h5>
-        <h6><i class="far fa-calendar-alt"></i> {{ $event->date }} - <i class="fas fa-city"></i> {{ $event->city->nombre }}</h6>
-        <h3>Fecha Hoy: {{ date('Y-m-d') }} fecha del evento: {{ $event->date }}</h3>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="https://via.placeholder.com/90" alt="">
+            </div>
+            <div class="col-md-10">
+                <h5 class="card-title">{{ $event->name }}</h5>
+                <h6><i class="far fa-calendar-alt"></i> {{ $event->date }} - <i class="fas fa-city"></i> {{ $event->city->nombre }}</h6>
+            </div>
+        </div>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ $event->athletes->count() }} Inscriptos</h5>
@@ -42,7 +46,7 @@
         @if($event->date >= date('Y-m-d'))
             <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Registrarse</a>
         @else
-            <a href="{{ route('events.index') }}" class="btn btn-warning">Evento Pasado</a>
+            <a href="{{ route('events.index') }}" class="btn btn-warning">Inscripción cerrada</a>
         @endif
 
       </div>

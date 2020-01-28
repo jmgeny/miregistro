@@ -29,9 +29,9 @@ class HomeController extends Controller
 
         // $events = Event::orderBy('id','ASC')->with('organizer','sport')->paginate(3);
 
-        $eventsFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(7);
+        $eventsFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(5);
 
-        $eventsPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(7);
+        $eventsPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(5);
 
         return view('home', ['eventsFut' => $eventsFut, 'eventsPas' => $eventsPas]);
     }

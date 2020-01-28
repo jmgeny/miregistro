@@ -27,15 +27,20 @@ class InscriptionController extends Controller
         
         $athletes = Athlete::where('dni','=',$request->numeroDni)->get();
 
-        if (count($athletes) == 1) {
-            dd('Voy a verificar los datos del usuario encontrado: ');
-        } else {
-            dd('Voy a registrar el usuario con DNI: '. $request->numeroDni );
+        if (count($athletes) == 1) 
+        {
+            return redirect('login');
+        } 
+        else
+        {
+            return redirect('register');
         }
- 
-             return 'no se encontro';
     
     }
+
+    // public function athlete(Athlete $athlete){
+    //     return 'athlete';
+    // }
 
     public function inscribir(Event $event) 
     {

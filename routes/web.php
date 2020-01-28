@@ -15,15 +15,14 @@ Route::get('/prueba', function() {
 
 Route::get('/', function () {
 $fechaHoy = new DateTime();
-	// $events = App\Event::orderBy('id','ASC')->paginate(10);
-	// $events = App\Event::orderBy('id','ASC')->with('organizer', 'sport')->paginate(10);
-	$eventsFut = App\Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(10);
 
-	$eventPas = App\Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->paginate(10);
+	$eventsFut = App\Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(5);
+
+	$eventsPas = App\Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->paginate(5);
 
     return view('welcome',[
     				'eventsFut' => $eventsFut,
-    				'eventPas' => $eventPas]);
+    				'eventsPas' => $eventsPas]);
 
 })->name('welcome');
 
@@ -80,11 +79,5 @@ Route::post('/inscriptions/verDNI','InscriptionController@verDNI')->name('inscri
 
 Route::post('/inscrptions/inscribir/{event}','InscriptionController@inscribir')->name('inscriptions.inscribir');
 
-// Route::get('/inscriptions/create','InscriptionController@create')->name('inscriptions.create');
-
-// Route::post('/inscriptions','InscriptionController@store')->name('inscriptions.store');
-
-// Route::get('/inscriptions/{event}','InscriptionController@show')->name('inscriptions.show');
-
-// Route::get('/inscriptions/{event}/edit','InscriptionController@edit')->name('inscriptions.edit');
-// Route::get('/inscriptions/{event}','InscriptionController@registrar')->name('inscriptions.registrar');
+Route::get('/inscrptions/{athlete}/ahtlete','InscriptionController@athlete')->name('inscription.athlete');
+// Route::put('/inscrptions/{athlete}','InscriptionController@update')->name('athletes.update');
