@@ -12,9 +12,9 @@ class EventController extends Controller
     public function index() {
         $fechaHoy = new DateTime();
         
-        $eventFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->paginate(5);
+        $eventFut = Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->simplePaginate(5);
 
-        $eventPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->paginate(5);
+        $eventPas = Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->withCount('athletes')->orderBy('date', 'ASC')->simplePaginate(5);
 
     	return view('event.index',compact('eventFut','eventPas'));
         // return view('event.index');
@@ -46,7 +46,8 @@ class EventController extends Controller
     }
 
     public function show(Event $event) {
+
         $fechaHoy = new DateTime();
-       return view('event.show', ['event' => $event,'fechaHoy' => $fechaHoy]);
+        return view('event.show', ['event' => $event,'fechaHoy' => $fechaHoy]);
     }
 }

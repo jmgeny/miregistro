@@ -76,6 +76,17 @@
         <a href="{{ route('athletes.edit',$athlete->id) }}" class="btn btn-warning">Editar Datos</a>
         {{-- <a href="#" class="btn btn-primary">Inscribirse</a>                 --}}
             </div>
+
+@if(Auth::user()->id === $athlete->id)
+{{--             <div class="col-md-6">
+                                <form action="{{ route('inscriptions.borrar', $event->id) }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" name="_method">
+                                    <button class="btn btn-danger">Borrar inscripcion</button>
+                                </form>
+            </div> --}}
+            <h3>Borrar inscripcion</h3>
+@else
             <div class="col-md-6">
                                 <form action="{{ route('inscriptions.inscribir', $event->id) }}" method="POST">
                                     @csrf
@@ -83,6 +94,8 @@
                                     <button class="btn btn-success">Inscribirse</button>
                                 </form>
             </div>
+@endif            
+            
         </div>
     @endguest
     </section>

@@ -9,7 +9,7 @@
                 <div class="card text-center">
                   <div class="card-header">
                     <h5 class="card-title">{{ $event->name }}</h5>
-                    <h6>Inscriptos: {{ $event->athletes_count }}</h6>
+                    {{-- <h6>Inscriptos: {{ $event->athletes_count }}</h6> --}}
                   </div>
                   <img src="http://placehold.it/300x200" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -24,6 +24,7 @@
             </div>
         @endforeach
     </div>
+    {{ $eventFut->links() }}
 <hr>
     <h1>Evento Pasados</h1>
     <div class="row shadow">
@@ -32,7 +33,7 @@
                 <div class="card text-center">
                   <div class="card-header">
                     <h5 class="card-title">{{ $event->name }}</h5>
-                    <h6>Inscriptos: {{ $event->athletes_count }}</h6>
+                    {{-- <h6>Inscriptos: {{ $event->athletes_count }}</h6> --}}
                   </div>
                   <img src="http://placehold.it/300x200" class="card-img-top" alt="...">
                   <div class="card-body">
@@ -46,6 +47,7 @@
                 </div>
             </div>
         @endforeach
-    </div>    
+    </div>  
+    {{ $eventPas->links() }}  
 </div>
 @endsection

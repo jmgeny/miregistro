@@ -21,7 +21,8 @@
                     <tr>
                         <th>Apellido</th>
                         <th>Nacimiento</th>
-                        <th>Confimado</th>
+                        <th>email</th>
+                        <th>Estado</th>
                     </tr>                    
                 </thead>
                 <tbody>
@@ -29,7 +30,8 @@
                         <tr>
                             <td><a href="#">{{ $athlete->apellido }}, {{ $athlete->nombre }}</a></td>
                             <td>{{ $athlete->date }}</td>
-                            <td>SI/NO</td>
+                            <td>{{ $athlete->user->email }}</td>
+                            <td>Atleta: {{ $athlete->id }} User: {{ Auth::user()->id }}</td>
                         </tr>                    
                     @endforeach
                 </tbody>
@@ -42,6 +44,7 @@
         @else
             <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Iniciar Registro</a>
         @endguest --}}
+        <a href="{{ route('inscriptions.verInscripcion') }}">Ver Inscripcion</a>
 
         @if($event->date >= date('Y-m-d'))
             <a href="{{ route('inscriptions.index',$event->id) }}" class="btn btn-primary">Registrarse</a>

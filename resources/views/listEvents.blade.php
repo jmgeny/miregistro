@@ -24,7 +24,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $eventsFut->render() }} 
+                    {{ $eventsFut->links() }} 
         </div>
         <div class="col-6 shadow">
             <h5 class="text-title">Eventos Pasados</h5>
@@ -50,7 +50,7 @@
                             @endforeach
                         </tbody>
                     </table>
-                    {{ $eventsPas->render() }} 
+                    {{ $eventsPas->links() }} 
         </div>      
     </div>
 </div>

@@ -16,9 +16,9 @@ Route::get('/prueba', function() {
 Route::get('/', function () {
 $fechaHoy = new DateTime();
 
-	$eventsFut = App\Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->paginate(5);
+	$eventsFut = App\Event::where('date', '>=', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->simplePaginate(5);
 
-	$eventsPas = App\Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->paginate(5);
+	$eventsPas = App\Event::where('date', '<', $fechaHoy->format('y-m-d'))->with('organizer', 'sport')->orderBy('date', 'ASC')->simplePaginate(5);
 
     return view('welcome',[
     				'eventsFut' => $eventsFut,
@@ -76,8 +76,12 @@ Route::get('/inscriptions/index/{event}','InscriptionController@index')->name('i
 
 Route::post('/inscriptions/verDNI','InscriptionController@verDNI')->name('inscriptions.verDNI');
 // verifico si el DNI esta en la base de datos
+Route::post('/inscriptions/verInscripcion','InscriptionController@verInscripcion')->name('inscriptions.verInscripcion');
+// Verifico si el dni esta inscripto
 
 Route::post('/inscrptions/inscribir/{event}','InscriptionController@inscribir')->name('inscriptions.inscribir');
+
+Route::post('/inscrptions/borrar/{event}','InscriptionController@borrar')->name('inscriptions.borrar');
 
 Route::get('/inscrptions/{athlete}/ahtlete','InscriptionController@athlete')->name('inscription.athlete');
 // Route::put('/inscrptions/{athlete}','InscriptionController@update')->name('athletes.update');

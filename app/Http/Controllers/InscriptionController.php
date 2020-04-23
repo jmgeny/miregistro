@@ -38,6 +38,11 @@ class InscriptionController extends Controller
     
     }
 
+    public function verInscripcion(Request $request)
+    {
+        return 'hola';
+    }
+
     // public function athlete(Athlete $athlete){
     //     return 'athlete';
     // }
@@ -47,12 +52,26 @@ class InscriptionController extends Controller
         $idAthlete = Auth::id();
         $athlete = Athlete::find($idAthlete);
 
-        $event->athletes()->attach($idAthlete);
+
+        $event->athletes()->syncWithoutDetaching($idAthlete);
 
         return redirect()->route('events.show',compact('event'))
                          ->with('info','Se agrego el atleta: ' . $athlete->name);
         // return view('event.show', compact('event'));
     }
+
+    public function borrar(Event $event) 
+    {
+        $idAthlete = Auth::id();
+        $athlete = Athlete::find($idAthlete);
+
+
+        $event->athletes()->syncWithoutDetaching($idAthlete);
+
+        return redirect()->route('events.show',compact('event'))
+                         ->with('info','Se agrego el atleta: ' . $athlete->name);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

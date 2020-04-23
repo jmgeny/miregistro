@@ -93,7 +93,7 @@ class AthleteController extends Controller
             $path = Storage::disk('public')->put('avatar', $request->file('avatar'));
             $athlete->fill(['avatar' => asset($path)])->save();
         }
-// route('athletes.show',$athlete->id)
+        
         return redirect()->route('athletes.show',$athlete->id)
                          ->with('info','El atleta fue actualizado');
     }
